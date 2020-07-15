@@ -3,10 +3,10 @@
 #include <stdlib.h>
 #include <signal.h>
 
-void sigint_event_function(evutil_socket_t fd, short what, void *arg)
+void sigint_event_function(evutil_socket_t fd, short sig_num, void *arg)
 {
     struct event_base *base = (struct event_base *)arg;
-    printf("\nSIGINT\n");
+    printf("Caught signal %d\n", sig_num); 
     event_base_loopexit(base, NULL);
 }
 
